@@ -29,7 +29,7 @@ public class Sequence {
     public void add(String key, Vehicle v) {
 
         if (binarySearch(key, 0, this.seqVehicles.size() - 1) != -1) {
-            System.out.println("Empty Array; Error");
+            System.out.println("Duplicate KEY");
             System.exit(0);
         }
 
@@ -53,6 +53,16 @@ public class Sequence {
            return false;
         } else {
             this.seqVehicles.remove(index);
+            return true;
+        }
+    }
+
+    public boolean contains(String key){
+        int index=binarySearch(key,0, this.seqVehicles.size()-1);
+
+        if (index == -1){
+            return false;
+        } else {
             return true;
         }
     }
