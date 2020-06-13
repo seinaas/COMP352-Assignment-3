@@ -25,8 +25,9 @@ public class Vehicle {
     public String toString() {
         return "Vehicle{" +
                 "key='" + key + '\'' +
+                ", owner='" + owner + '\'' +
+                ", accidentsYear=" + accidentsYear +
                 '}';
-
     }
 
     public void sortAccidentsList() {

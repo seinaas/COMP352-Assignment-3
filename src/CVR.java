@@ -207,7 +207,7 @@ public class CVR {
         return size >= threshold;
     }
 
-    public String cvrType() {
+    public String type() {
         if (usingBigADT()) {
             return "AVL";
         } else {
