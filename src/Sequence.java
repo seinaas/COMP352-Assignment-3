@@ -1,15 +1,29 @@
 import java.util.ArrayList;
 
+/**
+ * Sequence ADT that contains all the methods to work with the data
+ * Built-on top of an ArrayList with methods from LinkedList
+ */
 public class Sequence {
 
 
     public ArrayList<Vehicle> seqVehicles;
 
+    /**
+     * Constructor for the Sequence
+     */
     public Sequence() {
         seqVehicles = new ArrayList<>();
     }
 
-    public int binarySearch(String key, int low, int high) {
+    /**
+     * Binary Search to Find a Key inside the sorted list.
+     * @param key
+     * @param low
+     * @param high
+     * @return integer containing the index (or -1 if not there)
+     */
+    private int binarySearch(String key, int low, int high) {
         if (high >= low) {
             int middle = low + (high - low) / 2;
 
@@ -26,6 +40,11 @@ public class Sequence {
     }
 
 
+    /**
+     * Add a (key,value) inside the Sequence
+     * @param key
+     * @param v Vehicle
+     */
     public void add(String key, Vehicle v) {
 
         if (binarySearch(key, 0, this.seqVehicles.size() - 1) != -1) {
@@ -46,6 +65,11 @@ public class Sequence {
         }
     }
 
+    /**
+     * Remove Element (from a key)
+     * @param key
+     * @return True if remove (ok), false otherwise
+     */
     public boolean remove(String key){
         int index=binarySearch(key,0, this.seqVehicles.size()-1);
 
@@ -57,16 +81,11 @@ public class Sequence {
         }
     }
 
-    public boolean contains(String key){
-        int index=binarySearch(key,0, this.seqVehicles.size()-1);
-
-        if (index == -1){
-            return false;
-        } else {
-            return true;
-        }
-    }
-
+    /**
+     * Getter for Values
+     * @param key
+     * @return Vehicle with the key.
+     */
     public Vehicle getValues(String key){
         int index=binarySearch(key,0, this.seqVehicles.size()-1);
 
@@ -76,6 +95,11 @@ public class Sequence {
         return this.seqVehicles.get(index);
     }
 
+    /**
+     * Next Key Element
+     * @param key
+     * @return String containing the key of the next element in the list
+     */
     public String nextKey(String key){
         int index=binarySearch(key,0, this.seqVehicles.size()-1);
 
@@ -86,6 +110,11 @@ public class Sequence {
     }
 
 
+    /**
+     * Previous Key
+     * @param key
+     * @return previous key string
+     */
     public String prevKey(String key){
         int index=binarySearch(key,0, this.seqVehicles.size()-1);
 
@@ -95,6 +124,10 @@ public class Sequence {
         return this.seqVehicles.get(index-1).getKey();
     }
 
+    /**
+     * Function that will return an arraylist containing all the keys inside the list
+     * @return arraylist of keys.
+     */
     public ArrayList<String> allKeys(){
         ArrayList<String> keysArray= new ArrayList<>();
         for (int i = 0; i < this.seqVehicles.size(); i++) {
@@ -103,7 +136,9 @@ public class Sequence {
         return keysArray;
     }
 
-
+    /**
+     * Clear the arraylist containing all the information. (using an array-list method)
+     */
     public void clear() {
         seqVehicles.clear();
     }
