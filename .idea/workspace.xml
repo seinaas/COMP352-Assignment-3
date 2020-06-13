@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3edc3283-f795-401a-8aa4-4c2abd24e082" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CVR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CVR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Driver.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vehicle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +90,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591919226160</updated>
       <workItem from="1591919262671" duration="7831000" />
-      <workItem from="1591996919950" duration="11444000" />
+      <workItem from="1591996919950" duration="12273000" />
     </task>
     <servers />
   </component>
@@ -105,25 +102,25 @@
       <screen x="0" y="0" width="1368" height="882" />
     </state>
     <state x="444" y="138" key="#com.intellij.ide.util.MemberChooser/0.0.1368.882@0.0.1368.882" timestamp="1591997413834" />
-    <state width="2043" height="389" key="GridCell.Tab.0.bottom" timestamp="1592012138925">
+    <state width="2043" height="389" key="GridCell.Tab.0.bottom" timestamp="1592013052275">
       <screen x="1440" y="-330" width="2560" height="1005" />
     </state>
     <state width="1326" height="209" key="GridCell.Tab.0.bottom/0.0.1368.882@0.0.1368.882" timestamp="1592011119940" />
-    <state width="2043" height="389" key="GridCell.Tab.0.bottom/1440.-330.2560.1005/0.23.1440.877@1440.-330.2560.1005" timestamp="1592012138925" />
-    <state width="2043" height="389" key="GridCell.Tab.0.center" timestamp="1592012138925">
+    <state width="2043" height="389" key="GridCell.Tab.0.bottom/1440.-330.2560.1005/0.23.1440.877@1440.-330.2560.1005" timestamp="1592013052275" />
+    <state width="2043" height="389" key="GridCell.Tab.0.center" timestamp="1592013052275">
       <screen x="1440" y="-330" width="2560" height="1005" />
     </state>
     <state width="1326" height="209" key="GridCell.Tab.0.center/0.0.1368.882@0.0.1368.882" timestamp="1592011119939" />
-    <state width="2043" height="389" key="GridCell.Tab.0.center/1440.-330.2560.1005/0.23.1440.877@1440.-330.2560.1005" timestamp="1592012138925" />
-    <state width="2043" height="389" key="GridCell.Tab.0.left" timestamp="1592012138924">
+    <state width="2043" height="389" key="GridCell.Tab.0.center/1440.-330.2560.1005/0.23.1440.877@1440.-330.2560.1005" timestamp="1592013052275" />
+    <state width="2043" height="389" key="GridCell.Tab.0.left" timestamp="1592013052274">
       <screen x="1440" y="-330" width="2560" height="1005" />
     </state>
     <state width="1326" height="209" key="GridCell.Tab.0.left/0.0.1368.882@0.0.1368.882" timestamp="1592011119939" />
-    <state width="2043" height="389" key="GridCell.Tab.0.left/1440.-330.2560.1005/0.23.1440.877@1440.-330.2560.1005" timestamp="1592012138924" />
-    <state width="2043" height="389" key="GridCell.Tab.0.right" timestamp="1592012138925">
+    <state width="2043" height="389" key="GridCell.Tab.0.left/1440.-330.2560.1005/0.23.1440.877@1440.-330.2560.1005" timestamp="1592013052274" />
+    <state width="2043" height="389" key="GridCell.Tab.0.right" timestamp="1592013052275">
       <screen x="1440" y="-330" width="2560" height="1005" />
     </state>
     <state width="1326" height="209" key="GridCell.Tab.0.right/0.0.1368.882@0.0.1368.882" timestamp="1592011119940" />
-    <state width="2043" height="389" key="GridCell.Tab.0.right/1440.-330.2560.1005/0.23.1440.877@1440.-330.2560.1005" timestamp="1592012138925" />
+    <state width="2043" height="389" key="GridCell.Tab.0.right/1440.-330.2560.1005/0.23.1440.877@1440.-330.2560.1005" timestamp="1592013052275" />
   </component>
 </project>
