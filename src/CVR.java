@@ -215,4 +215,7 @@ public class CVR {
         }
     }
 
+    public int getSize() {
+        return size;
+    }
 }
