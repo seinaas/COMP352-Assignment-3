@@ -6,13 +6,39 @@ import java.util.ArrayList;
  * Question 1: Discuss how both the time and space complexity change for each of the methods above if
  * the underlying structure of your CVR is an array or a linked list?
  * ====
+ * General:
+ *  generate(n) -> Time complexity: O(n) Space complexity: O(n)
+ *  setThreshold(threshold) -> Time complexity: O(1) Space complexity: O(1)
+ *  setKeyLength(length) -> Time complexity: O(1) Space complexity: O(1)
+ *  type() -> Time complexity: O(1) Space complexity: O(1)
  *
+ * Sequence:
+ *  allKeys() -> Time complexity: O(n) Space complexity: O(n)
+ *  add(key,value) -> Time complexity: O(n) Space complexity: O(1)
+ *  remove(key) -> Time complexity: O(n) Space complexity: O(1)
+ *  getValues(key) -> Time complexity: O(log n) Space complexity: O(1)
+ *  nextKey(key) -> Time complexity: O(log n) Space complexity: O(1)
+ *  prevKey(key) -> Time complexity: O(log n) Space complexity: O(1)
+ *  prevAccidents(key) -> Time complexity: O(log n) Space complexity: O(1)
+ *
+ * AVL:
+ *  allKeys() -> Time complexity: O(n) Space complexity: O(n)
+ *  add(key,value) -> Time complexity: O(log n) Space complexity: O(1)
+ *  remove(key) -> Time complexity: O(log n) Space complexity: O(1)
+ *  getValues(key) -> Time complexity: O(log n) Space complexity: O(1)
+ *  nextKey(key) -> Time complexity: O(log n) Space complexity: O(1)
+ *  prevKey(key) -> Time complexity: O(log n) Space complexity: O(1)
+ *  prevAccidents(key) ->Time complexity: O(log n) Space complexity: O(1)
  */
 
 /**
  * Question 2: Write a detailed report about your design decisions and specification of your CVR ADT
  * including a rationale and comments about assumptions and semantics.
  * ====
+ * We decided to use a custom Sequence to access the keys while under the threshold. Our reasoning was that this sequence can
+ * have the methods we need and be easy to implement since the use case is very limited (< threshold). In comparison, when we are
+ * above the threshold, we decided to use an AVL because it sorts itself and searching through one is quick. Furthermore, an AVL
+ * is self-balancing, so the time complexity will never be affected by the order in which we add the entries.
  */
 
 /**

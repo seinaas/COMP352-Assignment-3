@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 
 public class AVL {
-    // Java program for deletion in AVL Tree
-
-    class Node {
+    /**
+     * Inner node class
+     */
+    private class Node {
         Vehicle vehicle;
         int height;
         Node left, right;
@@ -17,21 +18,34 @@ public class AVL {
 
     private Node root, greater, lesser;
     private ArrayList<String> allKeys;
-    // A utility function to get height of the tree
-    int height(Node N) {
+
+    /**
+     * Utility function to return the height of the tree
+     * @param N Node to start from
+     * @return Height of the tree
+     */
+    private int height(Node N) {
         if (N == null)
             return 0;
         return N.height;
     }
 
-    // A utility function to get maximum of two integers
-    int max(int a, int b) {
+    /**
+     * Gets the maximum of two integers
+     * @param a Integer a
+     * @param b Integer b
+     * @return Higher integer
+     */
+    private int max(int a, int b) {
         return (a > b) ? a : b;
     }
 
-    // A utility function to right rotate subtree rooted with y
-    // See the diagram given above.
-    Node rightRotate(Node y) {
+    /**
+     * Right rotates the subtree at node y
+     * @param y Root node of subtree
+     * @return New root node
+     */
+    private Node rightRotate(Node y) {
         Node x = y.left;
         Node T2 = x.right;
 
@@ -47,9 +61,12 @@ public class AVL {
         return x;
     }
 
-    // A utility function to left rotate subtree rooted with x
-    // See the diagram given above.
-    Node leftRotate(Node x) {
+    /**
+     * Left rotates the subtree at node x
+     * @param x Root node of subtree
+     * @return New root node
+     */
+    private Node leftRotate(Node x) {
         Node y = x.right;
         Node T2 = y.left;
 
@@ -65,14 +82,25 @@ public class AVL {
         return y;
     }
 
-    // Get Balance factor of node N
-    int getBalance(Node N) {
+    /**
+     * Get balance of tree
+     * @param N root node
+     * @return Balance difference [-1, 1]
+     */
+    private int getBalance(Node N) {
         if (N == null)
             return 0;
         return height(N.left) - height(N.right);
     }
 
-    Node insert(Node node, String key, Vehicle v) {
+    /**
+     * Insert a new node into the AVL
+     * @param node Root node
+     * @param key Vehicle key
+     * @param v Vehicle
+     * @return New node
+     */
+    private Node insert(Node node, String key, Vehicle v) {
         /* 1. Perform the normal BST rotation */
         if (node == null) {
             return (new Node(v));
@@ -91,7 +119,7 @@ public class AVL {
 
 		/* 3. Get the balance factor of this ancestor
 		node to check whether this node became
-		Wunbalanced */
+		Unbalanced */
         int balance = getBalance(node);
 
         // If this node becomes unbalanced, then
@@ -119,10 +147,11 @@ public class AVL {
         return node;
     }
 
-    /* Given a non-empty binary search tree, return the
-    node with minimum key value found in that tree.
-    Note that the entire tree does not need to be
-    searched. */
+    /**
+     * Gets node with lowest key value
+     * @param node Root node
+     * @return Node with lowest key value
+     */
     Node minValueNode(Node node) {
         Node current = node;
 
@@ -133,6 +162,12 @@ public class AVL {
         return current;
     }
 
+    /**
+     * Deletes a node from the AVL
+     * @param root Root node
+     * @param key Key of node to delete
+     * @return New root
+     */
     private Node deleteNode(Node root, String key) {
         // STEP 1: PERFORM STANDARD BST DELETE
         if (root == null)
@@ -218,9 +253,10 @@ public class AVL {
         return root;
     }
 
-    // A utility function to print preorder traversal of
-    // the tree. The function also prints height of every
-    // node
+    /**
+     * Preorder Traversal of the AVL
+     * @param node Root node
+     */
     private void preOrder(Node node) {
         if (node != null) {
             System.out.print(node.vehicle.getKey() + " ");
@@ -229,6 +265,10 @@ public class AVL {
         }
     }
 
+    /**
+     * Inorder Traversal of the AVL
+     * @param root Root node
+     */
     private void inOrder(Node root) {
         if (root == null) return;
         inOrder(root.left);
@@ -236,6 +276,12 @@ public class AVL {
         inOrder(root.right);
     }
 
+    /**
+     * Search through avl to find specific node with corresponding key
+     * @param root Root node
+     * @param key Key to search
+     * @return Found node
+     */
     private Node find(Node root, String key) {
         while (root != null) {
             int comp = key.compareTo(root.vehicle.getKey());
@@ -250,6 +296,11 @@ public class AVL {
         return null;
     }
 
+    /**
+     * Finds the next key of given key in lexicographic order
+     * @param root Root node
+     * @param key Key to find
+     */
     private void findNext(Node root, String key) {
         int comp;
         while (root != null) {
@@ -263,6 +314,11 @@ public class AVL {
         }
     }
 
+    /**
+     * Finds the previous key of given key in lexicographic order
+     * @param root Root node
+     * @param key Key to find
+     */
     private void findPrev(Node root, String key) {
         int comp;
         while (root != null) {
@@ -281,20 +337,21 @@ public class AVL {
         }
     }
 
-    public boolean contains(Node root, String key) {
-        if (root.vehicle.getKey().equals(key)) {
-            return true;
-        }
-
-        return false;
-    }
-
+    /**
+     * All keys in AVL
+     * @return Returns an ArrayList containing all the keys sorted in lexicographic order
+     */
     public ArrayList<String> allKeys() {
         allKeys= new ArrayList<String>();
         inOrder(this.root);
         return allKeys;
     }
 
+    /**
+     * Mediator function that calls deleteNode
+     * @param key Key to remove
+     * @return Returns true if remove was successful and false otherwise
+     */
     public boolean remove(String key) {
         try {
             this.deleteNode(this.root, key);
@@ -305,14 +362,29 @@ public class AVL {
         }
     }
 
+    /**
+     * Mediator function that calls insert
+     * @param key Key of vehicle
+     * @param vehicle Vehicle to insert
+     */
     public void add(String key, Vehicle vehicle) {
         this.root=this.insert(this.root, key, vehicle);
     }
 
+    /**
+     * Calls find function and returns the vehicle info
+     * @param key Key to find
+     * @return Vehicle info
+     */
     public Vehicle getValues(String key) {
         return find(this.root, key).vehicle;
     }
 
+    /**
+     * Mediator function that calls findNext
+     * @param key Key to find
+     * @return Next key
+     */
     public String nextKey(String key) {
         findNext(this.root, key);
         String val = greater.vehicle.getKey();
@@ -320,6 +392,11 @@ public class AVL {
         return val;
     }
 
+    /**
+     * Mediator function that calls findPrev
+     * @param key Key to find
+     * @return Previous key
+     */
     public String prevKey(String key) {
         findPrev(this.root, key);
         String val = lesser.vehicle.getKey();
@@ -327,6 +404,9 @@ public class AVL {
         return val;
     }
 
+    /**
+     * Empty the AVL
+     */
     public void clear() {
         root.left=null;
         root.right=null;
