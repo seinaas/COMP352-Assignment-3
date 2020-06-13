@@ -103,15 +103,6 @@ public class Sequence {
         return keysArray;
     }
 
-    /*
-    public ArrayList<Vehicle> allVehicles(){
-        ArrayList<Vehicle> vArray=new ArrayList<>();
-        for (int i = 0; i < this.seqVehicles.size(); i++) {
-            vArray.add(seqVehicles.get(i));
-
-        }
-        return vArray;
-    }*/
 
     public void clear() {
         seqVehicles.clear();

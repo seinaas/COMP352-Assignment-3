@@ -18,18 +18,18 @@ public class CVR {
     }
 
     public CVR(int threshold, int keyLength) throws Exception {
-        setTreshold(threshold);
+        setThreshold(threshold);
         setKeyLength(keyLength);
     }
 
     /*
-        where 100 ≤ Threshold ≤ ~900,000 is an integer number
-        that defines when a listing should be implemented with
-        a data structure such as a Tree, Hash Table, AVL tree,
-        binary tree, if its size is greater than or equal to
-        value of Threshold. Otherwise it is implemented as a Sequence.
-         */
-    public void setTreshold(int threshold) throws Exception {
+    where 100 ≤ Threshold ≤ ~900,000 is an integer number
+    that defines when a listing should be implemented with
+    a data structure such as a Tree, Hash Table, AVL tree,
+    binary tree, if its size is greater than or equal to
+    value of Threshold. Otherwise it is implemented as a Sequence.
+     */
+    public void setThreshold(int threshold) throws Exception {
 
         if (threshold < 100 || threshold > 900000) {
             throw new Exception("Invalid threshold, your input must be between 100 and 900 000.");
@@ -88,8 +88,8 @@ public class CVR {
     return the values of the given key
      */
     public Vehicle getValues(String key) {
-        if (usingBigADT()){
-            return avl.getVehicle(key); //To Do Seina
+        if (usingBigADT()) {
+            return avl.getValues(key); //To Do Seina
         } else {
             return sequence.getValues(key);
         }
@@ -104,7 +104,7 @@ public class CVR {
     return the key for the successor of key.
      */
     public String nextKey(String key) {
-        if (usingBigADT()){
+        if (usingBigADT()) {
             return avl.nextKey(key);
         } else {
             return sequence.nextKey(key);
@@ -116,7 +116,7 @@ public class CVR {
     return the key for the predecessor of key
      */
     public String prevKey(String key) {
-        if (usingBigADT()){
+        if (usingBigADT()) {
             return avl.prevKey(key);
         } else {
             return sequence.prevKey(key);
@@ -127,9 +127,13 @@ public class CVR {
     returns a sequence (sorted in reverse chronological order) of accidents(previously)
     registered with the given key (dates).
      */
-    public Stack<Integer> prevAccidents(String key) {
+    public ArrayList<Integer> prevAccidents(String key) {
+        if (usingBigADT()) {
+            return avl.getValues(key).getAccidentsYear();
+        } else {
+            return sequence.getValues(key).getAccidentsYear();
+        }
 
-        return null;
     }
 
     /*
@@ -157,23 +161,21 @@ public class CVR {
     }
 
 
-    public void convertToAVL(){
-        ArrayList<String> keysList=sequence.allKeys();
-        for (String k: keysList) {
+    public void convertToAVL() {
+        ArrayList<String> keysList = sequence.allKeys();
+        for (String k : keysList) {
             avl.add(k, sequence.getValues(k));
         }
         sequence.clear();
     }
 
-    public void convertToSequence(){
-        ArrayList<String> keysList=avl.allKeys(); //ToDo: Seina
-        for (String k: keysList) {
+    public void convertToSequence() {
+        ArrayList<String> keysList = avl.allKeys(); //ToDo: Seina
+        for (String k : keysList) {
             sequence.add(k, avl.getValues(k));
         }
         avl.clear(); //ToDo: Seina
     }
-
-
 
 
     public boolean usingBigADT() {
