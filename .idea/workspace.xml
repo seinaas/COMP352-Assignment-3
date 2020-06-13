@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3edc3283-f795-401a-8aa4-4c2abd24e082" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/src/CVR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CVR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sequence.java" afterDir="false" />
+>>>>>>> parent of 6e96901... Modify Clear Algo
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +85,11 @@
       <option name="presentableId" value="Default" />
       <updated>1591919226160</updated>
       <workItem from="1591919262671" duration="7831000" />
+<<<<<<< HEAD
       <workItem from="1591996919950" duration="10891000" />
+=======
+      <workItem from="1591996919950" duration="8932000" />
+>>>>>>> parent of 6e96901... Modify Clear Algo
     </task>
     <servers />
   </component>
