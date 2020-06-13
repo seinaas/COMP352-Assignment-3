@@ -5,10 +5,10 @@ import java.util.Collections;
 public class Vehicle {
     private String key;
     private String owner;
-    private ArrayList<Integer> accidentsYear=new ArrayList<>();
+    private ArrayList<Integer> accidentsYear = new ArrayList<>();
 
-    public Vehicle(String key){
-        this.key=key;
+    public Vehicle(String key) {
+        this.key = key;
     }
 
     public Vehicle(String key, String owner) {
@@ -26,11 +26,14 @@ public class Vehicle {
         return "Vehicle{" +
                 "key='" + key + '\'' +
                 '}';
-    public void sortAccidentsList(){
+
+    }
+
+    public void sortAccidentsList() {
         Collections.sort(this.accidentsYear, Collections.reverseOrder());
     }
 
-    public void addAccident(int year){
+    public void addAccident(int year) {
         accidentsYear.add(year);
         sortAccidentsList();
     }
@@ -39,3 +42,4 @@ public class Vehicle {
         return accidentsYear;
     }
 }
+

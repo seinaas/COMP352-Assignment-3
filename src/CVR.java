@@ -89,13 +89,11 @@ public class CVR {
      */
     public Vehicle getValues(String key) {
         if (usingBigADT()) {
-            return avl.getValues(key); //To Do Seina
+            return avl.getValues(key);
         } else {
             return sequence.getValues(key);
         }
 
-
-        return null;
         //Here do a toString maybe to call a certain Vehicle?
 
     }
@@ -141,7 +139,7 @@ public class CVR {
      */
     public void remove(String key) {
         if (usingBigADT()) {
-            if (avl.remove(key))//ToDo: Make it boolean and make sure you can actually remove it
+            if (avl.remove(key))
                 size--;
         } else {
             if (sequence.remove(key))
@@ -154,7 +152,7 @@ public class CVR {
      */
     private ArrayList<String> allKeys() {
         if (usingBigADT()) {
-            return avl.allKeys(); //seina will fix it.
+            return avl.allKeys();
         } else {
             return sequence.allKeys();
         }
@@ -170,11 +168,11 @@ public class CVR {
     }
 
     public void convertToSequence() {
-        ArrayList<String> keysList = avl.allKeys(); //ToDo: Seina
+        ArrayList<String> keysList = avl.allKeys();
         for (String k : keysList) {
             sequence.add(k, avl.getValues(k));
         }
-        avl.clear(); //ToDo: Seina
+        avl.clear();
     }
 
 
