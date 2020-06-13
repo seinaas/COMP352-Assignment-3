@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.Random;
 import java.util.Stack;
 
@@ -80,7 +79,7 @@ public class CVR {
      */
     public void add(String key, Vehicle v) {
         size++;
-
+        //Call: convertToSequence and convertToADL
         //modifier vehicle
 
     }
@@ -92,7 +91,7 @@ public class CVR {
         if (usingBigADT()){
             return avl.getVehicle(key); //To Do Seina
         } else {
-            return sequence.getVehicle(key);
+            return sequence.getValues(key);
         }
 
 
@@ -156,6 +155,25 @@ public class CVR {
             return sequence.allKeys();
         }
     }
+
+
+    public void convertToAVL(){
+        ArrayList<String> keysList=sequence.allKeys();
+        for (String k: keysList) {
+            avl.add(k, sequence.getValues(k));
+        }
+        sequence.clear();
+    }
+
+    public void convertToSequence(){
+        ArrayList<String> keysList=avl.allKeys(); //ToDo: Seina
+        for (String k: keysList) {
+            sequence.add(k, avl.getValues(k));
+        }
+        avl.clear(); //ToDo: Seina
+    }
+
+
 
 
     public boolean usingBigADT() {

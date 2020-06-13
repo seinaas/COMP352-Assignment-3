@@ -1,7 +1,6 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Stack;
+
 
 public class Vehicle {
     private String key;
@@ -12,11 +11,11 @@ public class Vehicle {
         this.key=key;
     }
 
-    public Vehicle(String key, String owner, ArrayList<Integer> accidentsYear) {
+    public Vehicle(String key, String owner) {
         this.key = key;
         this.owner = owner;
-        this.accidentsYear = accidentsYear;
     }
+
 
     public String getKey() {
         return this.key;
@@ -26,7 +25,7 @@ public class Vehicle {
         Collections.sort(this.accidentsYear, Collections.reverseOrder());
     }
 
-    public void addAccidents(int year){
+    public void addAccident(int year){
         accidentsYear.add(year);
         sortAccidentsList();
     }

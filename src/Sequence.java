@@ -67,7 +67,7 @@ public class Sequence {
         }
     }
 
-    public Vehicle getVehicle (String key){
+    public Vehicle getValues(String key){
         int index=binarySearch(key,0, this.seqVehicles.size()-1);
 
         if (index == -1){
@@ -103,6 +103,7 @@ public class Sequence {
         return keysArray;
     }
 
+    /*
     public ArrayList<Vehicle> allVehicles(){
         ArrayList<Vehicle> vArray=new ArrayList<>();
         for (int i = 0; i < this.seqVehicles.size(); i++) {
@@ -110,7 +111,7 @@ public class Sequence {
 
         }
         return vArray;
-    }
+    }*/
 
     public void clear() {
         seqVehicles.clear();
