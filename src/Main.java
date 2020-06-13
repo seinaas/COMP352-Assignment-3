@@ -9,9 +9,16 @@ public class Main {
         tree.add("IYN28FB25E", new Vehicle("IYN28FB25E"));
 
 
-        tree.allKeys();
+        System.out.println(tree.allKeys());
         tree.remove("AAMNF3INWW");
         System.out.println();
-        tree.allKeys();
+        System.out.println(tree.allKeys());
+
+        tree.getValues("E2JG90PA5F");
+        System.out.println(tree.nextKey("A94V62IFM2"));
+        System.out.println(tree.prevKey("FEN39FS20P"));
+
+        tree.clear();
+        System.out.println(tree.allKeys());
     }
 }

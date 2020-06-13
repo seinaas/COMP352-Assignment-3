@@ -11,4 +11,11 @@ public class Vehicle {
     public String getKey() {
         return this.key;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "key='" + key + '\'' +
+                '}';
+    }
 }

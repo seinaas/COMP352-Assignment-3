@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class AVL {
     // Java program for deletion in AVL Tree
 
@@ -13,8 +15,8 @@ public class AVL {
     }
 
 
-    Node root;
-
+    private Node root, greater, lesser;
+    private ArrayList<String> allKeys;
     // A utility function to get height of the tree
     int height(Node N) {
         if (N == null)
@@ -161,6 +163,7 @@ public class AVL {
                 // No child case
                 if (temp == null) {
                     temp = root;
+                    allKeys.remove(temp);
                     root = null;
                 } else // One child case
                     root = temp; // Copy the contents of
@@ -180,8 +183,9 @@ public class AVL {
         }
 
         // If the tree had only one node then return
-        if (root == null)
+        if (root == null) {
             return root;
+        }
 
         // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
         root.height = max(height(root.left), height(root.right)) + 1;
@@ -228,19 +232,107 @@ public class AVL {
     private void inOrder(Node root) {
         if (root == null) return;
         inOrder(root.left);
-        System.out.println(root.vehicle.getKey());
+        allKeys.add(root.vehicle.getKey());
         inOrder(root.right);
     }
 
-    public void allKeys() {
-        inOrder(this.root);
+    private Node find(Node root, String key) {
+        while (root != null) {
+            int comp = key.compareTo(root.vehicle.getKey());
+            if (comp == 0) {
+                return root;
+            } else if (comp > 0) {
+                root = root.right;
+            } else {
+                root = root.left;
+            }
+        }
+        return null;
     }
 
-    public void remove(String key) {
-        this.deleteNode(this.root, key);
+    private void findNext(Node root, String key) {
+        int comp;
+        while (root != null) {
+            comp = root.vehicle.getKey().compareTo(key);
+            if (root.left != null && root.left.vehicle.getKey().equals(key)) {
+                greater = root;
+                return;
+            } else if (comp > 0) {
+                greater = root;
+                root = root.left;
+            } else {
+                root = root.right;
+            }
+        }
+    }
+
+    private void findPrev(Node root, String key) {
+        int comp;
+        while (root != null) {
+            comp = root.vehicle.getKey().compareTo(key);
+            if (comp < 0) {
+                lesser = root;
+                root = root.right;
+            } else if (comp > 0) {
+                root = root.left;
+            } else {
+                if (root.left != null) {
+                    lesser = root.left;
+                }
+                root = root.left;
+            }
+        }
+    }
+
+    public boolean contains(Node root, String key) {
+        if (root.vehicle.getKey().equals(key)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public ArrayList<String> allKeys() {
+        allKeys= new ArrayList<String>();
+        inOrder(this.root);
+        return allKeys;
+    }
+
+    public boolean remove(String key) {
+        try {
+            this.deleteNode(this.root, key);
+            return true;
+        } catch (NullPointerException e) {
+            System.out.println("The key doesn't exist in the CVR!");
+            return false;
+        }
     }
 
     public void add(String key, Vehicle vehicle) {
         this.root=this.insert(this.root, key, vehicle);
+    }
+
+    public Vehicle getValues(String key) {
+        return find(this.root, key).vehicle;
+    }
+
+    public String nextKey(String key) {
+        findNext(this.root, key);
+        String val = greater.vehicle.getKey();
+        greater = null;
+        return val;
+    }
+
+    public String prevKey(String key) {
+        findPrev(this.root, key);
+        String val = lesser.vehicle.getKey();
+        lesser = null;
+        return val;
+    }
+
+    public void clear() {
+        root.left=null;
+        root.right=null;
+        root=null;
     }
 }
