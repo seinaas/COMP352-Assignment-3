@@ -18,7 +18,7 @@ public class CVR {
         keyLength = 11;
     }
 
-    public CVR(int threshold, int keyLength) throws Exception {
+    public CVR(int threshold, int keyLength) {
         setThreshold(threshold);
         setKeyLength(keyLength);
     }
@@ -30,10 +30,10 @@ public class CVR {
     binary tree, if its size is greater than or equal to
     value of Threshold. Otherwise it is implemented as a Sequence.
      */
-    public void setThreshold(int threshold) throws Exception {
+    public void setThreshold(int threshold) {
 
         if (threshold < 100 || threshold > 900000) {
-            throw new Exception("Invalid threshold, your input must be between 100 and 900 000.");
+            System.out.println("Invalid threshold, your input must be between 100 and 900 000.");
         } else {
             this.threshold = threshold;
         }
@@ -43,11 +43,11 @@ public class CVR {
     /*
     where 10 ≤ Length ≤ 17 is an integer number that defines the fixed string length of keys.
      */
-    public void setKeyLength(int n) throws Exception {
+    public void setKeyLength(int n) {
         if (n >= 10 && n <= 17) {
             keyLength = n;
         } else {
-            throw new Exception("You cannot set the key length to " + n + "!");
+            System.out.println("You cannot set the key length to " + n + "!");
         }
     }
 
@@ -90,11 +90,11 @@ public class CVR {
             convertADT();
         }
 
-
-
-        //Call: convertToSequence and convertToAVL
-        //modifier vehicle
-
+        if (usingBigADT()) {
+            avl.add(key, v);
+        } else {
+            sequence.add(key,v);
+        }
     }
 
 
@@ -152,6 +152,7 @@ public class CVR {
     remove the entry for the given key
      */
     public void remove(String key) {
+        boolean wasUsingBig = usingBigADT();
         if (usingBigADT()) {
             if (avl.remove(key))
                 size--;
@@ -159,12 +160,16 @@ public class CVR {
             if (sequence.remove(key))
                 size--;
         }
+
+        if (wasUsingBig != usingBigADT()) {
+            convertADT();
+        }
     }
 
     /*
     return all keys as a sorted sequence (lexicographic order)
      */
-    private ArrayList<String> allKeys() {
+    public ArrayList<String> allKeys() {
         if (usingBigADT()) {
             return avl.allKeys();
         } else {
@@ -173,7 +178,7 @@ public class CVR {
     }
 
 
-    public void convertToAVL() {
+    private void convertToAVL() {
         ArrayList<String> keysList = sequence.allKeys();
         for (String k : keysList) {
             avl.add(k, sequence.getValues(k));
@@ -181,7 +186,7 @@ public class CVR {
         sequence.clear();
     }
 
-    public void convertToSequence() {
+    private void convertToSequence() {
         ArrayList<String> keysList = avl.allKeys();
         for (String k : keysList) {
             sequence.add(k, avl.getValues(k));
@@ -189,19 +194,25 @@ public class CVR {
         avl.clear();
     }
     
-    public void convertADT(){
+    private void convertADT(){
         ArrayList<String> keysList;
-
-        //= avl.allKeys();
-
-        for (String k : keysList) {
-            sequence.add(k, avl.getValues(k));
+        if (avl.allKeys().size() == 0) {
+            convertToAVL();
+        } else {
+            convertToSequence();
         }
-        avl.clear();
     }
 
-    public boolean usingBigADT() {
+    private boolean usingBigADT() {
         return size >= threshold;
+    }
+
+    public String cvrType() {
+        if (usingBigADT()) {
+            return "AVL";
+        } else {
+            return "Sequence";
+        }
     }
 
 }
