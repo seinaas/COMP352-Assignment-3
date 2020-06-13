@@ -29,7 +29,7 @@ public class Sequence {
     public void add(String key, Vehicle v) {
 
         if (binarySearch(key, 0, this.seqVehicles.size() - 1) != -1) {
-            System.out.println("Empty Array; Error");
+            System.out.println("Duplicate KEY");
             System.exit(0);
         }
 
@@ -37,10 +37,11 @@ public class Sequence {
             seqVehicles.add(v);
         } else {
             int j = seqVehicles.size();
-            for (; j > 0; j--) {
+            while (j>0){
                 if (key.compareToIgnoreCase(seqVehicles.get(j - 1).getKey()) > 0) {
                     break;
                 }
+                j--;
             }
             seqVehicles.add(j, v);
         }
@@ -57,7 +58,17 @@ public class Sequence {
         }
     }
 
-    public Vehicle getVehicle (String key){
+    public boolean contains(String key){
+        int index=binarySearch(key,0, this.seqVehicles.size()-1);
+
+        if (index == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Vehicle getValues(String key){
         int index=binarySearch(key,0, this.seqVehicles.size()-1);
 
         if (index == -1){
@@ -93,14 +104,6 @@ public class Sequence {
         return keysArray;
     }
 
-    public ArrayList<Vehicle> allVehicles(){
-        ArrayList<Vehicle> vArray=new ArrayList<>();
-        for (int i = 0; i < this.seqVehicles.size(); i++) {
-            vArray.add(seqVehicles.get(i));
-
-        }
-        return vArray;
-    }
 
     public void clear() {
         seqVehicles.clear();

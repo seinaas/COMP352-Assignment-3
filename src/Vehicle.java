@@ -1,12 +1,21 @@
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class Vehicle {
     private String key;
-    public Stack<Integer> accidentsYear = new Stack<Integer>();
+    private String owner;
+    private ArrayList<Integer> accidentsYear=new ArrayList<>();
 
     public Vehicle(String key){
         this.key=key;
     }
+
+    public Vehicle(String key, String owner) {
+        this.key = key;
+        this.owner = owner;
+    }
+
 
     public String getKey() {
         return this.key;
@@ -17,5 +26,16 @@ public class Vehicle {
         return "Vehicle{" +
                 "key='" + key + '\'' +
                 '}';
+    public void sortAccidentsList(){
+        Collections.sort(this.accidentsYear, Collections.reverseOrder());
+    }
+
+    public void addAccident(int year){
+        accidentsYear.add(year);
+    }
+
+    public ArrayList<Integer> getAccidentsYear() {
+        sortAccidentsList();
+        return accidentsYear;
     }
 }
