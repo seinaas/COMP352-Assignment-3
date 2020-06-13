@@ -7,6 +7,7 @@ public class CVR {
     private int threshold;
     private int keyLength;
     private int size = 0;
+
     //Create AVL
     AVL avl = new AVL();
     //Create Sequence
@@ -58,15 +59,18 @@ public class CVR {
         String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         ArrayList<String> listOfKeys = new ArrayList<>(n);
 
-        for (int i = 0; i < n; ) {
+        for (int i = 0; i < n; i++ ) {
             String newKey = "";
 
             do {
+
                 while (newKey.length() < keyLength) {
                     newKey += chars.charAt(r.nextInt(chars.length()));
                 }
+
                 //verify if key exist.
             } while (listOfKeys.contains(newKey) || this.allKeys().contains(newKey));
+            listOfKeys.add(newKey);
 
         }
 
@@ -78,11 +82,21 @@ public class CVR {
     add an entry for the given key and value
      */
     public void add(String key, Vehicle v) {
+
+        boolean wasUsingBig=usingBigADT();
         size++;
-        //Call: convertToSequence and convertToADL
+
+        if (wasUsingBig != usingBigADT()){
+            convertADT();
+        }
+
+
+
+        //Call: convertToSequence and convertToAVL
         //modifier vehicle
 
     }
+
 
     /*
     return the values of the given key
@@ -174,7 +188,17 @@ public class CVR {
         }
         avl.clear();
     }
+    
+    public void convertADT(){
+        ArrayList<String> keysList;
 
+        //= avl.allKeys();
+
+        for (String k : keysList) {
+            sequence.add(k, avl.getValues(k));
+        }
+        avl.clear();
+    }
 
     public boolean usingBigADT() {
         return size >= threshold;

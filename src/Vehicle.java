@@ -35,10 +35,11 @@ public class Vehicle {
 
     public void addAccident(int year) {
         accidentsYear.add(year);
-        sortAccidentsList();
+
     }
 
     public ArrayList<Integer> getAccidentsYear() {
+        sortAccidentsList();
         return accidentsYear;
     }
 }
