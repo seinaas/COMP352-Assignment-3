@@ -254,10 +254,7 @@ public class AVL {
         int comp;
         while (root != null) {
             comp = root.vehicle.getKey().compareTo(key);
-            if (root.left != null && root.left.vehicle.getKey().equals(key)) {
-                greater = root;
-                return;
-            } else if (comp > 0) {
+            if (comp > 0) {
                 greater = root;
                 root = root.left;
             } else {
