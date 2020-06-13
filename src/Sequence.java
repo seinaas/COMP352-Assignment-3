@@ -23,7 +23,7 @@ public class Sequence {
      * @param high
      * @return integer containing the index (or -1 if not there)
      */
-    public int binarySearch(String key, int low, int high) {
+    private int binarySearch(String key, int low, int high) {
         if (high >= low) {
             int middle = low + (high - low) / 2;
 
