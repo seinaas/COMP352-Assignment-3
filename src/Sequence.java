@@ -37,10 +37,11 @@ public class Sequence {
             seqVehicles.add(v);
         } else {
             int j = seqVehicles.size();
-            for (; j > 0; j--) {
+            while (j>0){
                 if (key.compareToIgnoreCase(seqVehicles.get(j - 1).getKey()) > 0) {
                     break;
                 }
+                j--;
             }
             seqVehicles.add(j, v);
         }
