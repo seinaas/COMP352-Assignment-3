@@ -21,6 +21,11 @@ public class Vehicle {
         return this.key;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "key='" + key + '\'' +
+                '}';
     public void sortAccidentsList(){
         Collections.sort(this.accidentsYear, Collections.reverseOrder());
     }
