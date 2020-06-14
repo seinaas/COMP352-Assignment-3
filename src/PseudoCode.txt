@@ -1,0 +1,100 @@
+Class CVR:
+
+Global Variables:
+int threshold
+int keyLength
+int size
+
+Create AVL/Sequence Object
+
+Default & Parameters Constructor
+
+Algorithm: setThreshold (int threshold)
+      if (threshold < 100 || threshold > 900000)
+        print("Invalid threshold, your input must be between 100 and 900 000.");
+      else
+        this.threshold = threshold;
+
+Algorithm: setKeyLength (int n)
+      if (n >= 10 && n <= 17)
+         keyLength = n;
+      else
+         print("You cannot set the key length to " + n + "!");
+
+Algorithm generate (int n)
+    Output: return ArrayList (of String)
+        String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        ArrayList<String> listOfKeys = new ArrayList<>(n);
+
+        for (i=0 to i<n) {
+            String newKey = "";
+
+            do {
+
+                while (newKey.length() < keyLength) {
+                    newKey += chars.charAt(r.nextInt(chars.length()));
+                }
+
+                //verify if key exist.
+            } while (listOfKeys.contains(newKey) || this.allKeys().contains(newKey));
+            listOfKeys.add(newKey);
+
+        }
+
+        return listOfKeys;
+
+Algorithm add (String key, Vehicle v):
+
+    boolean wasUsingBig=usingBigADT();
+    size++
+
+    if wasUsingBig != usingBigADT()
+        convertADT();
+
+    if usingBigADT():
+        avl.add(key, v);
+    else
+        sequence.add(key,v);
+
+Algorithm getValues (String key):
+     if (usingBigADT()) {
+         return avl.getValues(key);
+     else
+         return sequence.getValues(key);
+
+Algorithm nextKey(String key):
+    if (usingBigADT()):
+        return avl.nextKey(key)
+    else:
+        return sequence.nextKey(key)
+
+Algorithm prevKey(String key):
+    if (usingBigADT()):
+        return avl.prevKey(key)
+    else:
+        return sequence.prevKey(key)
+
+Algorithm prevAccidents(String key):
+     if (usingBigADT()):
+            return avl.getValues(key).getAccidentsYear();
+        else:
+            return sequence.getValues(key).getAccidentsYear();
+
+Algorithm remove (String key):
+    boolean wasUsingBig=usingBigADT()
+
+    if (usingBigADT()):
+        if (avl.remove(key))
+            size--;
+    else
+         if (sequence.remove(key):
+             size--;
+
+    if (wasUsingBig != usingBigADT()):
+        convertADT();
+
+Algorithm allKeys():
+    if (usingBigADT()):
+         return avl.allKeys();
+    else:
+        return sequence.allKeys();
